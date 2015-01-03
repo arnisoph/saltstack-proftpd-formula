@@ -1,0 +1,10 @@
+{% load_yaml as rawmap_osfam %}
+Debian:
+  pkgs:
+    - proftpd-basic
+  service: {}
+RedHat:
+  pkgs:
+    - proftpd
+  service: {}
+{% endload %}
