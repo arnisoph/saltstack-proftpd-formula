@@ -1,0 +1,6 @@
+{%- from 'proftpd/defaults.yaml' import rawmap_osfam with context -%}
+{%- set datamap = salt['grains.filter_by'](rawmap_osfam, merge=salt['pillar.get']('proftpd:lookup')) -%}
+
+{%- for i in datamap.config.manage|default([]) if i != 'main' %}
+Include {{ datamap.config[i].path }}
+{% endfor -%}

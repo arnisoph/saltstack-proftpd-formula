@@ -2,9 +2,41 @@
 Debian:
   pkgs:
     - proftpd-basic
+  config:
+    manage:
+      - main
+      - common
+      - tls
+      - modules
+    main:
+      path: /etc/proftpd/proftpd.conf
+      template_path: salt://proftpd/files/main
+    common:
+      path: /etc/proftpd/conf.d/common.conf
+    tls:
+      path: /etc/proftpd/conf.d/tls.conf
+    modules:
+      path: /etc/proftpd/conf.d/modules.conf
+    passwd: {}
   service: {}
 RedHat:
   pkgs:
     - proftpd
+  config:
+    manage:
+      - main
+      - common
+      - tls
+      - modules
+    main:
+      path: /etc/proftpd/proftpd.conf
+      template_path: salt://proftpd/files/main
+    common:
+      path: /etc/proftpd/conf.d/common.conf
+    tls:
+      path: /etc/proftpd/conf.d/tls.conf
+    modules:
+      path: /etc/proftpd/conf.d/modules.conf
+    passwd: {}
   service: {}
 {% endload %}
